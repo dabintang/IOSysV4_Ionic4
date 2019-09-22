@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>支出类型</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="openOutCategoryDetail(0)">
+        <ion-icon name="add" class="icon40"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles"
+      refreshingText="刷新中...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item-group *ngFor="let itemOC of list">
+    <ion-item-sliding>
+      <ion-item detail (click)="openOutCategoryDetail(itemOC.id)" color="light" class="boldFont" lines="none">
+        <ion-label *ngIf="itemOC.isActive">{{itemOC.name}}</ion-label>
+        <ion-note *ngIf="itemOC.isActive==false">{{itemOC.name}}</ion-note>
+
+        <ion-icon name='add-circle-outline' (click)="openOutTypeDetail(itemOC.id, 0, $event)" slot="end" class="icon30"
+          color="primary" *ngIf="itemOC.isActive"></ion-icon>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="openOutCategoryDetail(itemOC.id)" color="danger">
+          <ion-icon name="create" class="icon30"></ion-icon> 编辑
+        </ion-item-option>
+        <ion-item-option (click)="removeOutCategory(itemOC.id)" color="danger">
+          <ion-icon name="trash" class="icon30"></ion-icon> 删除
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding *ngFor="let itemOT of itemOC.lstOutType">
+      <ion-item detail (click)="openOutTypeDetail(itemOC.id, itemOT.id, null)">
+        <ion-label *ngIf="itemOT.isActive">{{ itemOT.name }}</ion-label>
+        <ion-note *ngIf="itemOT.isActive == false">{{ itemOT.name }}</ion-note>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option (click)="removeOutType(itemOT.id)" color="danger">
+          <ion-icon name="trash" class="icon30"></ion-icon> 删除
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-item-group>
+</ion-content>

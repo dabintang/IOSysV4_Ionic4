@@ -1,0 +1,100 @@
+/* 头部 start */
+ion-header ion-title {
+  border-bottom: 1px solid #d1d1d1;
+  background-color: #f8f8f8;
+}
+/* 头部 end */
+
+/* 底部 start */
+/* 底部 end */
+
+/* 九宫格 start */
+.g9 {
+  text-align: center;
+}
+
+.g9 div {
+  background-color: #f0f5ff;
+  border: 1px solid #e6e9ee;
+  border-radius: 2px;
+  padding: 5px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.g9 ion-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+/* 九宫格 end */
+
+/* 输入框 start */
+// ion-input {
+//   --padding-start: 30px !important;
+// }
+// textarea {
+//   --padding-start: 30px !important;
+// }
+/* 输入框 end */
+
+/* item start */
+.item-label-s {
+  // margin-right: 0px;
+  // padding-right: 0px;
+  width: 70px;
+}
+.item-label-m {
+  width: 100px;
+}
+.item-textarea-label {
+  margin-top: -57px;
+}
+.item-date-input-s {
+  width: 80%;
+}
+.item-picker-input-s {
+  width: 70%;
+}
+.item-label-line2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.item-note-line2 {
+  margin-top: 0px;
+  padding-top: 0px;
+  font-size: 0.8em;
+}
+/* item end */
+
+/* 图标大小 start */
+.icon100 {
+  font-size: 100px;
+}
+.icon40 {
+  font-size: 40px;
+}
+.icon30 {
+  font-size: 30px;
+}
+.icon20 {
+  font-size: 20px;
+}
+/* 图标大小 end */
+
+/* 弹框 start */
+.btn-save-cancel {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+.btn-save-cancel ion-button {
+  width: 45%;
+}
+/* 弹框 end */
+
+/* 分组 start */
+.boldFont {
+  font-weight: bold;
+}
+/* 分组 end */

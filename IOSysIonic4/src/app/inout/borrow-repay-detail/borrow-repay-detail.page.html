@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>借还（{{ getOpeModel() }}）</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label color="primary" class="item-label-s">日期</ion-label>
+    <ion-datetime [(ngModel)]="item.brDate" display-format="YYYY-MM-DD" cancelText="取消" doneText="选择"
+      class="item-date-input-s"></ion-datetime>
+  </ion-item>
+  <ion-item>
+      <ion-label color="primary" class="item-label-s">对方姓名</ion-label>
+      <ion-input type="text" placeholder="请输入对方姓名" [(ngModel)]="item.target" class="item-picker-input-s" clearInput>
+      </ion-input>
+    </ion-item>
+  <ion-item>
+    <ion-label color="primary" class="item-label-s">借还类型</ion-label>
+    <borrow-repay-type-picker [(ngModel)]="item.brType" placeholder="请选择借还类型" class="item-picker-input-s">
+    </borrow-repay-type-picker>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" class="item-label-s">账户</ion-label>
+    <amount-account-picker [(ngModel)]="item.amountAccountID" placeholder="请选择目标账户" class="item-picker-input-s">
+    </amount-account-picker>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" class="item-label-s">金额</ion-label>
+    <ion-input type="number" placeholder="请输入金额" [(ngModel)]="item.amount" class="item-picker-input-s" clearInput>
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label class="item-textarea-label item-label-s" color="secondary">备注</ion-label>
+    <ion-textarea rows="4" maxlength="256" placeholder="请输入备注" [(ngModel)]="item.remark"></ion-textarea>
+  </ion-item>
+
+  <div class="btn-save-cancel">
+    <ion-button (click)="save()" color="danger" [disabled]="isView">保存</ion-button>&nbsp;
+    <ion-button (click)="dismiss(false)">取消</ion-button>
+  </div>
+</ion-content>

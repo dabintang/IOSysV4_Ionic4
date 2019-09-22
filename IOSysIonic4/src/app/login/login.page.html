@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>登录</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="shouPop($event)">
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label color="primary" class="item-label-s">账号</ion-label>
+    <ion-input type="text" [(ngModel)]="req.loginName" placeholder="请输入账号" clearInput></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" class="item-label-s">密码</ion-label>
+    <ion-input type="password" [(ngModel)]="req.password" placeholder="请输入密码" clearInput></ion-input>
+  </ion-item>
+  <ion-item lines="none">
+    <label slot="end" style="color:#0CD1E8;">记住密码</label>
+    <ion-toggle [(ngModel)]="isSavePwd" slot="end"></ion-toggle>
+  </ion-item>
+
+  <ion-row responsive-sm>
+    <ion-col>
+      <ion-button (click)="logIn()" expand="block" class="loginBtn">
+        登录
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

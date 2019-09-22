@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>支出统计</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles"
+                           refreshingText="刷新中...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item-divider color="light" class="boldFont">
+    <ion-label slot="start">
+      {{ reqMonth | date:"yyyy-MM"}}
+    </ion-label>
+    <ion-label slot="end">{{ totalAmount() | number: '1.2-2' }}</ion-label>
+  </ion-item-divider>
+
+  <!-- <ion-item *ngFor="let item of list" detail (click)="clickItem(item)">
+        <ion-label>{{ item.name }}</ion-label>
+        <ion-note color="dark" slot="end">{{ item.amount | number: '1.2-2' }}</ion-note>
+      </ion-item> -->
+
+  <ion-item-group *ngFor="let itemOC of list">
+    <ion-item-divider class="boldFont">
+      <ion-label slot="start">{{itemOC.name}}</ion-label>
+      <ion-label slot="end">{{itemOC.amount | number: '1.2-2'}}</ion-label>
+    </ion-item-divider>
+
+    <ion-item *ngFor="let itemOT of itemOC.lstSumOutType" detail (click)="openDetail(itemOC, itemOT)">
+      <ion-label>{{itemOT.name}}</ion-label>
+      <ion-note color="dark" slot="end">{{ itemOT.amount | number: '1.2-2' }}</ion-note>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>收支报表</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="g9">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div routerLink="/tabs/reportTab/accountTurnoverList">
+          <ion-icon name="inOutRecord"></ion-icon>
+          <br />
+          <span>账户流水</span>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div routerLink="/tabs/reportTab/borrowRepaySumList">
+          <ion-icon name="borrowReplaySum"></ion-icon>
+          <br />
+          <span>借还统计</span>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div routerLink="/tabs/reportTab/monthSumList">
+          <ion-icon name="inOutSum"></ion-icon>
+          <br />
+          <span>收支统计</span>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

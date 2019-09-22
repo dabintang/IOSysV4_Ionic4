@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>账户流水</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="accountFilter()">
+        <ion-icon slot="icon-only" name="options"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles"
+      refreshingText="刷新中...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item-group *ngFor="let itemMonth of list">
+    <ion-item-divider color="light" class="boldFont">
+      <ion-label slot="start">{{itemMonth.month | date:'yyyy-MM' }}</ion-label>
+      <ion-label slot="end">{{itemMonth.totalAmount | number: '1.2-2'}}</ion-label>
+    </ion-item-divider>
+
+    <ion-item *ngFor="let itemAcc of itemMonth.lstInfo" detail (click)="openDetail(itemAcc)">
+      <ion-label class="item-label-line2">
+        {{ itemAcc.amountAccountName }}
+        <br />
+        <ion-note class="item-note-line2">
+          {{itemAcc.date | date:"yyyy-MM-dd"}} ({{ itemAcc.typeName }})
+        </ion-note>
+      </ion-label>
+      <ion-note color="dark" slot="end">{{ itemAcc.amount | number: '1.2-2' }}</ion-note>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" disabled="{{!hasMore}}">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

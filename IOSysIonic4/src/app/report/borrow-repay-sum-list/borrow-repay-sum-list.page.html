@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>借还统计</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles"
+      refreshingText="刷新中...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item *ngFor="let item of list" detail routerLink="/tabs/reportTab/borrowRepaySumDetailList/{{item.name}}">
+      <ion-label>{{ item.name }}</ion-label>
+      <ion-label class="ion-text-end">{{ item.value | number: '1.2-2' }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

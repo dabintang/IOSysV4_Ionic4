@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>出错了</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-row>
+      <ion-col> </ion-col>
+      <ion-col>
+        <ion-icon name="sad" class="icon100"></ion-icon>
+      </ion-col>
+      <ion-col> </ion-col>
+    </ion-row>
+
+    <ion-card-content>
+      {{ errMsg }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-row responsive-sm>
+    <ion-col>
+      <ion-button (click)="logOut()" expand="block" class="loginBtn">
+        重新登录
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

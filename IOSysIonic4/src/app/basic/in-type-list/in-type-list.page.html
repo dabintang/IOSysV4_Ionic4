@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>收入类型</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="openDetail(0)">
+        <ion-icon name="add" class="icon40"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="刷新中..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of list">
+      <ion-item detail (click)="openDetail(item.id)">
+        <ion-label *ngIf="item.isActive">{{ item.name }}</ion-label>
+        <ion-note *ngIf="item.isActive == false">{{ item.name }}</ion-note>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option (click)="removeItem(item.id)" color="danger">
+          <ion-icon name="trash" class="icon30"></ion-icon> 删除
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

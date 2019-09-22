@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>支出（{{ totalAmount() | number: '1.0-2' }}）</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openDetail(0)">
+        <ion-icon name="add" class="icon40"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon name="arrow-dropleft" (click)="toPreDate()" class="icon30"></ion-icon>
+    </ion-buttons>
+    <input type="date" [(ngModel)]="reqDate" (change)="onDateChanged()" class="headerDate">
+    <ion-buttons slot="end">
+      <ion-icon name="arrow-dropright" (click)="toNextDate()" class="icon30"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="刷新中..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of list">
+      <ion-item detail (click)="openDetail(item.id)">
+        <ion-label class="item-label-line2">
+          {{ item.outTypeName }}
+          <br />
+          <ion-note class="item-note-line2">{{ item.amountAccountName }}</ion-note>
+        </ion-label>
+        <ion-note color="dark" slot="end">{{ item.amount | number: '1.2-2' }}</ion-note>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option (click)="removeItem(item.id)" color="danger">
+          <ion-icon name="trash" class="icon30"></ion-icon> 删除
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

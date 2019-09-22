@@ -1,0 +1,24 @@
+<ion-list>
+  <ion-item>
+    <ion-label>是否包含借还</ion-label>
+    <ion-toggle [(ngModel)]="req.isContainBorrowRepay"></ion-toggle>
+  </ion-item>
+
+  <ion-radio-group [(ngModel)]="req.enmShowInOutType" *ngIf="req.isShowInOutFilter">
+    <ion-list-header>
+      <ion-label>收支筛选</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>全部显示</ion-label>
+      <ion-radio value="1"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>只显示收入</ion-label>
+      <ion-radio value="2"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>只显示支出</ion-label>
+      <ion-radio value="3"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+</ion-list>

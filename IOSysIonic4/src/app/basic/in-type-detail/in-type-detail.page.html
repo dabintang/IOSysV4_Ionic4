@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>收入类型（{{ getOpeModel() }}）</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label color="primary" position="fixed">名称</ion-label>
+    <ion-input
+      type="text"
+      maxlength="32"
+      placeholder="请输入名称"
+      [(ngModel)]="item.name"
+      clearInput
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" position="fixed">默认账户</ion-label>
+    <amount-account-picker [(ngModel)]="item.amountAccountID" placeholder="请选择默认账户"></amount-account-picker>
+  </ion-item>
+  <ion-item>
+    <ion-label color="secondary">是否可用</ion-label>
+    <ion-toggle [(ngModel)]="item.isActive"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-label class="item-textarea-label item-label-s" color="secondary">备注</ion-label>
+    <ion-textarea
+      rows="4"
+      maxlength="256"
+      placeholder="请输入备注"
+      [(ngModel)]="item.remark"
+    ></ion-textarea>
+  </ion-item>
+
+  <div class="btn-save-cancel">
+    <ion-button (click)="save()" color="danger">保存</ion-button>&nbsp;
+    <ion-button (click)="dismiss(false)">取消</ion-button>
+  </div>
+</ion-content>
