@@ -16,7 +16,7 @@ export class ConfigStore {
   getApiBaseUrl(): string {
     let apiBaseUrl = this.store.getLocal<string>('ApiBaseUrl');
     if (apiBaseUrl == null) {
-      apiBaseUrl = 'http://172.81.235.6:10001';
+      apiBaseUrl = 'http://172.81.235.6:20001';
       this.setApiBaseUrl(apiBaseUrl);
     }
 
