@@ -21,6 +21,8 @@ import { OutRecordReq } from 'src/model/report/OutRecordReq';
 import { OutRecordListInfo } from 'src/model/report/OutRecordListInfo';
 import { MonthOutSumReq } from 'src/model/report/MonthOutSumReq';
 import { MonthOutCategorySumListInfo } from 'src/model/report/MonthOutCategorySumListInfo';
+import { YearSumReq } from 'src/model/report/YearSumReq';
+import { YearSumListInfo } from 'src/model/report/YearSumListInfo';
 
 @Injectable()
 export class ReportAPI {
@@ -94,6 +96,15 @@ export class ReportAPI {
   async sumInCome(req: InSumReq, showLoader: boolean = true): Promise<ResultList<SumListInfo<string>>> {
     return await this.api.get<ResultList<SumListInfo<string>>>(
       '/api/Report/SumInCome',
+      req,
+      showLoader
+    );
+  }
+
+  //年度统计
+  async sumYear(req: YearSumReq, showLoader: boolean = true): Promise<ResultList<YearSumListInfo<string>>> {
+    return await this.api.get<ResultList<YearSumListInfo<string>>>(
+      '/api/Report/SumYear',
       req,
       showLoader
     );

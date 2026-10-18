@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -10,6 +11,7 @@ import { InTypePickerComponent } from './in-type-picker/in-type-picker.component
 import { BorrowRepayTypePickerComponent } from './borrow-repay-type-picker/borrow-repay-type-picker.component';
 import { IonTdbPickerMulti2Component } from './ion-tdb-picker-multi2/ion-tdb-picker-multi2.component';
 import { OutTypePickerComponent } from './out-type-picker/out-type-picker.component';
+import { MonthSumPopComponent } from './month-sum-pop/month-sum-pop.component';
 
 @NgModule({
   declarations: [
@@ -19,9 +21,11 @@ import { OutTypePickerComponent } from './out-type-picker/out-type-picker.compon
     InTypePickerComponent,
     OutCategoryPickerComponent,
     BorrowRepayTypePickerComponent,
-    OutTypePickerComponent],
+    OutTypePickerComponent,
+    MonthSumPopComponent],
   imports: [
     CommonModule,
+    FormsModule,
     IonicModule
   ],
   exports: [
@@ -31,6 +35,8 @@ import { OutTypePickerComponent } from './out-type-picker/out-type-picker.compon
     InTypePickerComponent,
     OutCategoryPickerComponent,
     BorrowRepayTypePickerComponent,
-    OutTypePickerComponent]
+    OutTypePickerComponent,
+    MonthSumPopComponent],
+  entryComponents: [MonthSumPopComponent]
 })
 export class ComponentsModule { }

@@ -56,6 +56,14 @@ const routes: Routes = [
             loadChildren: '../report/month-sum-list/month-sum-list.module#MonthSumListPageModule'
           },
           {
+            path: 'yearSumList',
+            loadChildren: '../report/year-sum-list/year-sum-list.module#YearSumListPageModule'
+          },
+          {
+            path: 'yearMonthSumList',
+            loadChildren: '../report/year-month-sum-list/year-month-sum-list.module#YearMonthSumListPageModule'
+          },
+          {
             path: 'monthInSumList',
             loadChildren: '../report/month-in-sum-list/month-in-sum-list.module#MonthInSumListPageModule'
           },

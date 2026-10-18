@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { MonthSumListPage } from './month-sum-list.page';
-import { MonthSumPopComponent } from 'src/app/components/month-sum-pop/month-sum-pop.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 const routes: Routes = [
   {
@@ -20,9 +20,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    ComponentsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [MonthSumListPage, MonthSumPopComponent],
-  entryComponents: [MonthSumPopComponent]
+  declarations: [MonthSumListPage]
 })
 export class MonthSumListPageModule {}
