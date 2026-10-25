@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ reqYear }}年月度结余</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="shouPop($event)">
+        <ion-icon slot="icon-only" name="options"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles"
+                           refreshingText="刷新中...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ng-container *ngFor="let item of list">
+      <ion-item (click)="toggleExpand(item)">
+        <ion-label class="item-label-line2">
+          {{ item.month }}
+          <br />
+          <ion-note class="item-note-line2 month-sum-note">
+            {{ item.inAmount | number: '1.2-2' }}-{{ item.outAmount | number: '1.2-2' }}
+          </ion-note>
+        </ion-label>
+        <ion-note color="dark" slot="end" class="month-sum-balance">
+          {{ item.balance | number: '1.2-2' }}
+        </ion-note>
+        <ion-icon slot="end" class="month-sum-expand" name="arrow-dropdown" [class.is-expand]="item.isExpand"></ion-icon>
+      </ion-item>
+
+      <!-- 二级列表：该月的收入、支出总额 -->
+      <div class="month-sum-sub-list" *ngIf="item.isExpand">
+        <ion-item class="month-sum-sub-item" detail (click)="openInSum(item)">
+          <ion-label class="month-sum-sub-label">收入</ion-label>
+          <ion-note color="dark" slot="end">{{ item.inAmount | number: '1.2-2' }}</ion-note>
+        </ion-item>
+        <ion-item class="month-sum-sub-item" detail (click)="openOutSum(item)">
+          <ion-label class="month-sum-sub-label">支出</ion-label>
+          <ion-note color="dark" slot="end">{{ -item.outAmount | number: '1.2-2' }}</ion-note>
+        </ion-item>
+      </div>
+    </ng-container>
+  </ion-list>
+</ion-content>

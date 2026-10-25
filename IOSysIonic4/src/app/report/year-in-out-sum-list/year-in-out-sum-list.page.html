@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>年度结余</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="shouPop($event)">
+        <ion-icon slot="icon-only" name="options"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles"
+                           refreshingText="刷新中...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item *ngFor="let item of list" detail (click)="clickItem(item)">
+      <ion-label class="item-label-line2">
+        {{ item.year }}
+        <br />
+        <ion-note class="item-note-line2 year-sum-note">
+          {{ item.inAmount | number: '1.2-2' }}-{{ item.outAmount | number: '1.2-2' }}
+        </ion-note>
+      </ion-label>
+      <ion-note color="dark" slot="end" class="year-sum-balance">
+        {{ item.balance | number: '1.2-2' }}
+      </ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

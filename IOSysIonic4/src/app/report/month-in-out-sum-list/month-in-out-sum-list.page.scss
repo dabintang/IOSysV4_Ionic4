@@ -1,0 +1,43 @@
+/* 月度结余 start */
+//左侧第二行：月度收入-月度支出（小一号灰色）
+.month-sum-note {
+  color: #8c8c8c;
+  font-size: 0.8em;
+}
+
+//右侧：月度结余
+.month-sum-balance {
+  font-weight: bold;
+  font-size: 1.05em;
+}
+
+//最右侧：展开/收起图标
+.month-sum-expand {
+  margin-left: 8px;
+  font-size: 16px;
+  color: #8c8c8c;
+  transition: transform 0.2s ease-in-out;
+
+  &.is-expand {
+    transform: rotate(180deg);
+  }
+}
+
+//二级列表（该月的收入、支出总额）
+.month-sum-sub-list {
+  background-color: #fafafa;
+}
+
+.month-sum-sub-item {
+  --min-height: 38px;
+  --padding-start: 32px;
+  --inner-padding-end: 16px;
+  --background: #fafafa;
+
+  font-size: 0.9em;
+}
+
+.month-sum-sub-label {
+  color: #666666;
+}
+/* 月度结余 end */
